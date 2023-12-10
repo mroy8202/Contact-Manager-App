@@ -5,11 +5,11 @@ const Contact = require('../model/contactModel');
 exports.updateContact = async(req, res) => {
     try {
         const { id } = req.params;
-        const { name, phone, email } = req.body;
+        const { contactName, contactPhone, contactEmail } = req.body;
 
         const update = await Contact.findByIdAndUpdate(
             {_id: id},
-            {name, phone, email}
+            {contactName, contactPhone, contactEmail}
         );
 
         res.status(200).json(

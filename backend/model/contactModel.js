@@ -3,18 +3,17 @@ const mongoose = require('mongoose');
 
 // route handler
 const contactSchema = new mongoose.Schema({
-    name: {
+    contactName: {
         type: String,
         required: true,
-        maxLength: 50,
     },
-    phone: {
+    contactPhone: {
         type: Number,
-        required: [true, "10 digit phone number required"],
-        minlength: 10
+        required: true,
     }, 
-    email: {
+    contactEmail: {
         type: String,
+        required: true,
     }
 });
 

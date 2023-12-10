@@ -5,10 +5,10 @@ const Contact = require('../model/contactModel');
 exports.createContact = async (req, res) => {
     try {
         // extract data from request body
-        const {name, phone, email} = req.body;
+        const {contactName, contactPhone, contactEmail} = req.body;
 
         // create a new object and insert in DB
-        const response = await Contact.create({name, phone, email});
+        const response = await Contact.create({contactName, contactPhone, contactEmail});
 
         // send a json response with a success flag
         res.status(200).json({
