@@ -6,9 +6,6 @@ import CreateContactPage from './pages/CreateContactPage';
 import axios from 'axios';
 
 function App() {
-
-  
-
   return (
     <div>
       <Routes>

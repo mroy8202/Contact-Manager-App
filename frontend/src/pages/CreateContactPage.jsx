@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import Spinner from '../components/Spinner';
 import { Link } from 'react-router-dom';
 
 const CreateContactPage = () => {
@@ -24,7 +23,6 @@ const CreateContactPage = () => {
 
   async function submitHandler(event) {
     event.preventDefault();
-    // console.log(formData);
 
     // send this data to database
     let sendData = () => {

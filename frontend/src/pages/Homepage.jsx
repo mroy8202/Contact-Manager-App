@@ -1,14 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Namecard from '../components/Namecard';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Spinner from '../components/Spinner';
 
 const Homepage = () => {
 
   const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   async function fetchContacts() {
+    setLoading(true);
     try {
       const response = await axios.get('/api/v1/getContact');
       setContacts(response.data.data);
@@ -16,6 +19,7 @@ const Homepage = () => {
     catch(err) {
       console.error(err);
     }
+    setLoading(false);
   }
 
   useEffect( () => {
@@ -65,16 +69,22 @@ const Homepage = () => {
         </div>
 
         <div>
-            {
-              contacts.map( (contact, index) => (
-                <div key={index}>
-                  <Namecard contact={contact} />
-                </div>
-              ) )
-            }
+          {loading ? 
+            <div>
+              <Spinner />
+            </div> :
+            <div>
+              {
+                contacts.map( (contact, index) => (
+                  <div key={index}>
+                    <Namecard contact={contact} />
+                  </div>
+                ) )
+              }
+            </div>
+          }
+            
         </div>
-
-        
     </div>
   )
 }
