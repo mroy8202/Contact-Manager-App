@@ -55,28 +55,48 @@ const Homepage = () => {
   }
 
   return (
-    <div>
+    <div className='w-1/2 mx-auto'>
         <div>
-            <div>
-                <form onSubmit={searchHandler}>
-                    <input type='text' placeholder='search here...' onChange={changeHandler} name='search' value={formData.search} />
-                    <button>Search</button>
-                </form>
-            </div>
-            <div>
-                <button onClick={createContactHandler}>Create Contact</button>
+          <h1 className='font-extrabold text-3xl text-center pt-2 pb-2'>Contact Manager App</h1>
+        </div>
+
+        <div className='flex justify-between h-12 mt-5 mb-5'>
+            <form onSubmit={searchHandler} className='flex h-full w-3/4 justify-between'>
+                <input 
+                  type='text' 
+                  placeholder='search here...' 
+                  onChange={changeHandler} 
+                  name='search' 
+                  value={formData.search} 
+                  className='h-full w-full border-l border-t border-b border-black p-2 rounded-l-3xl outline-blue-700 '
+                />
+
+                <button className='h-full border-solid border border-black rounded-r-3xl p-2'>
+                  Search
+                </button>
+            </form>
+
+            <div className='h-full'>
+                <button 
+                  onClick={createContactHandler}
+                  className='h-full border-solid border border-blue-600 p-2 rounded-lg'
+                  >
+                    Create Contact
+                </button>
             </div>
         </div>
 
-        <div>
+        <div className='flex'>
           {loading ? 
-            <div>
+            <div className='h-screen w-screen flex justify-center items-center'>
               <Spinner />
             </div> :
-            <div>
+            <div className='flex flex-col w-full gap-4 mb-10'>
               {
                 contacts.map( (contact, index) => (
-                  <div key={index}>
+                  <div key={index}
+                    className='border border-black rounded-md'
+                  >
                     <Namecard contact={contact} />
                   </div>
                 ) )

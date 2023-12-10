@@ -40,42 +40,47 @@ const CreateContactPage = () => {
   }
 
   return (
-    <div>
-        <div>
+    <div className='flex flex-col w-1/3 mx-auto text-center gap-10 mt-10'>
+        <div className='flex flex-col '>
             <div>
-                <h1>Create a new contact</h1>
+                <p className='text-3xl font-extrabold mb-10'>Create a new contact</p>
             </div>
-            <div>
-                <form onSubmit={submitHandler}>
+            <div className='flex flex-col w-full'>
+                <form onSubmit={submitHandler}
+                    className='flex flex-col gap-2' 
+                >
+                    <input 
+                        type='text' 
+                        placeholder='your name' 
+                        onChange={changeHandler} 
+                        name='contactName' 
+                        value={formData.contactName}
+                        className='h-10 border-solid border border-blue-600 p-2 rounded-lg'
+                    ></input>
+                
+                
+                    <input 
+                        type='text' 
+                        placeholder='phone number' 
+                        onChange={changeHandler} 
+                        name='contactPhone' 
+                        value={formData.contactPhone}
+                        className='h-10 border-solid border border-blue-600 p-2 rounded-lg'
+                    ></input>
+                
+                
+                    <input 
+                        type='text' 
+                        placeholder='your email' 
+                        onChange={changeHandler} 
+                        name='contactEmail' 
+                        value={formData.contactEmail}
+                        className='h-10 border-solid border border-blue-600 p-2 rounded-lg'
+                    ></input>
+                    
                     <div>
-                        <input 
-                            type='text' 
-                            placeholder='your name' 
-                            onChange={changeHandler} 
-                            name='contactName' 
-                            value={formData.contactName}
-                        ></input>
-                    </div>
-                    <div>
-                        <input 
-                            type='text' 
-                            placeholder='phone number' 
-                            onChange={changeHandler} 
-                            name='contactPhone' 
-                            value={formData.contactPhone}
-                        ></input>
-                    </div>
-                    <div>
-                        <input 
-                            type='text' 
-                            placeholder='your email' 
-                            onChange={changeHandler} 
-                            name='contactEmail' 
-                            value={formData.contactEmail}
-                        ></input>
-                    </div>
-                    <div>
-                        <button type='submit'>
+                        <button type='submit'
+                        className='h-full border-solid border border-blue-600 p-2 rounded-lg'>
                             Submit
                         </button>
                     </div>
@@ -84,7 +89,9 @@ const CreateContactPage = () => {
         </div>
 
         <div>
-            <Link to='/'>
+            <Link to='/'
+            className='text-blue-900'
+            >
                 Go to homepage
             </Link>
         </div>
