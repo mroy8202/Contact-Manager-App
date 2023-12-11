@@ -4,6 +4,7 @@ import Namecard from '../components/Namecard';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Spinner from '../components/Spinner';
+import NoContactsFound from '../components/NoContactsFound';
 
 const Homepage = () => {
 
@@ -81,7 +82,8 @@ const Homepage = () => {
                   onChange={changeHandler} 
                   name='search' 
                   value={formData.search} 
-                  className='h-full w-full border-l border-t border-b border-black p-2 rounded-l-3xl outline-blue-700 '
+                  className='h-full w-full border-l border-t border-b border-black 
+                  p-2 rounded-l-3xl outline-blue-700 '
                 />
 
                 <button className='h-full border-solid border border-black rounded-r-3xl p-2'>
@@ -92,7 +94,9 @@ const Homepage = () => {
             <div className='h-full'>
                 <button 
                   onClick={createContactHandler}
-                  className='h-full border-solid border border-blue-600 p-2 rounded-lg'
+                  className='h-full border-solid border border-blue-600 p-2 
+                  rounded-lg font-bold bg-green-200 hover:bg-green-950 
+                  duration-100 ease-in-out hover:text-white '
                   >
                     Create Contact
                 </button>
@@ -115,8 +119,13 @@ const Homepage = () => {
                 ) )
               }
             </div>
+          } 
+        </div>
+
+        <div>
+          {
+            !loading && contacts.length == 0 && <NoContactsFound />
           }
-            
         </div>
     </div>
   )
