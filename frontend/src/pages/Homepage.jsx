@@ -14,6 +14,12 @@ const Homepage = () => {
     setLoading(true);
     try {
       const response = await axios.get('/api/v1/getContact');
+
+      // sort the contacts
+      const sortedContacts = response.data.data.sort((a, b) =>
+        a.contactName.localeCompare(b.contactName)
+      );
+      
       setContacts(response.data.data);
     }
     catch(err) {
@@ -47,6 +53,13 @@ const Homepage = () => {
     event.preventDefault();
     console.log("Submit button clicked");
     console.log(formData);
+
+    // filter contacts based on search 
+    let result = contacts.filter( (contact) => {
+      return contact.contactName.toLowerCase().includes(formData.search.toLowerCase());
+    });
+
+    setContacts(result);
   }
 
   function createContactHandler() {
@@ -64,7 +77,7 @@ const Homepage = () => {
             <form onSubmit={searchHandler} className='flex h-full w-3/4 justify-between'>
                 <input 
                   type='text' 
-                  placeholder='search here...' 
+                  placeholder='search name here...' 
                   onChange={changeHandler} 
                   name='search' 
                   value={formData.search} 
